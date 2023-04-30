@@ -1,0 +1,115 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    overflow: hidden;
+}
+.container {
+    font-size: 10px;
+    width: 40em;
+    height: 40em;
+    position: relative;
+}
+.sun {
+    position: absolute;
+    top: 15em;
+    left: 15em;
+    width: 10em;
+    height: 10em;
+    background-color: yellow;
+    border-radius: 50%;
+    box-shadow: 0 0 3em white;
+}
+.earth,.moon,.mars,.venus {
+    position: absolute;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+    border-width: 0.1em 0.1em 0 0;
+    border-radius: 50%;
+}
+.earth {
+    top: 4em;
+    left: 4em;
+    width: 32em;
+    height: 32em; 
+    animation: orbit 36s linear infinite;   
+}
+.moon {
+    top: 0;
+    right: 0;
+    width: 8em;
+    height: 8em; 
+    animation: orbit 3.0s linear infinite;
+}
+.mars {
+    top: -5em;
+    left: -5em;
+    width: 50em;
+    height: 50em;
+    animation: orbit 68s linear infinite;
+}
+.venus {
+    top: -15em;
+    left: -15em;
+    width: 70em;
+    height: 70em;
+    animation: orbit 100s linear infinite;
+}
+.earth::before,
+.moon::before,
+.mars::before,
+.venus::before {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+}
+.earth::before {
+    top: 2.8em;
+    right: 2.8em;
+    width: 3em;
+    height: 3em;
+    background-color: rgb(5, 176, 238);    
+}
+.moon::before {
+    top: 0.8em;
+    right: 0.2em;
+    width: 1.2em;
+    height: 1.2em;
+    background-color: silver;
+}
+.mars::before {
+    top: 7em;
+    right: 6em;
+    width: 2em;
+    height: 2em;
+    background-color: red;
+}
+.venus::before{
+    top: 8em;
+    right: 8em;
+    width: 5em;
+    height: 5em;
+    background-color: rgb(10, 139, 148);
+}
+.planet-name::before {
+    display: none;
+    position: absolute;
+    color: white;
+    font-size: 1.2em;
+}
+.sun:hover::after,
+.earth:hover::after,
+.moon:hover::after,
+.mars:hover::after,
+.venus:hover::after {
+    content: attr(data-name);
+    position: absolute;
+    color: white;
+    font-size: 1.2em;
+    top: -1.5em; /* change bottom to top and adjust the value */
+    left: 50%;
+    transform: translateX(-50%);
+}
